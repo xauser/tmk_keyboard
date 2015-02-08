@@ -42,7 +42,7 @@
 TARGET = ergodox_lufa
 
 # Directory common source filess exist
-TOP_DIR = ../..
+TMK_DIR = ../../tmk_core
 
 # Directory keyboard dependent files exist
 TARGET_DIR = .
@@ -54,13 +54,16 @@ SRC =	keymap.c \
 	ergodox.c \
 	twimaster.c
 
+ifdef KEYMAP
+    SRC := keymap_$(KEYMAP).c $(SRC)
+endif
+
 CONFIG_H = config.h
 
 
 # MCU name, you MUST set this to match the board you are using
 # type "make clean" after changing this, so all files will be rebuilt
 MCU = atmega32u4
-#MCU = at90usb1286
 
 
 # Processor frequency.
@@ -91,7 +94,7 @@ ARCH = AVR8
 F_USB = $(F_CPU)
 
 # Interrupt driven control endpoint task
-OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
+# OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 
 # Boot Section Size in *bytes*
 #   Teensy halfKay   512
@@ -105,36 +108,18 @@ OPT_DEFS += -DBOOTLOADER_SIZE=512
 BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE = yes	# Mouse keys(+5000)
 EXTRAKEY_ENABLE = yes	# Audio control and System control(+600)
-CONSOLE_ENABLE = yes    # Console for debug
-COMMAND_ENABLE = yes    # Commands for debug and configuration
-SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-NKRO_ENABLE = yes		# USB Nkey Rollover (+500)
+#CONSOLE_ENABLE = yes    # Console for debug
+#COMMAND_ENABLE = yes    # Commands for debug and configuration
+#SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
+#NKRO_ENABLE = yes		# USB Nkey Rollover (+500)
 #PS2_MOUSE_ENABLE = yes	# PS/2 mouse(TrackPoint) support
 INVERT_NUMLOCK = yes 	# invert state of NumLock led
 
 
 # Search Path
 VPATH += $(TARGET_DIR)
-VPATH += $(TOP_DIR)
+VPATH += $(TMK_DIR)
 
-include $(TOP_DIR)/protocol.mk
-include $(TOP_DIR)/protocol/lufa.mk
-include $(TOP_DIR)/common.mk
-include $(TOP_DIR)/rules.mk
-
-dvorak: OPT_DEFS += -DKEYMAP_DVORAK
-dvorak: all
-
-colemak: OPT_DEFS += -DKEYMAP_COLEMAK
-colemak: all
-
-workman: OPT_DEFS += -DKEYMAP_WORKMAN
-workman: all
-
-micro: OPT_DEFS += -DKEYMAP_MICRO
-micro: all
-
-cub: OPT_DEFS += -DKEYMAP_CUB
-cub: all
-
-
+include $(TMK_DIR)/protocol/lufa.mk
+include $(TMK_DIR)/common.mk
+include $(TMK_DIR)/rules.mk
