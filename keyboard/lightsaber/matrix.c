@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "debug.h"
 #include "util.h"
 #include "matrix.h"
+#include "led_lightsaber.h"
 
 
 #ifndef DEBOUNCE
@@ -54,6 +55,7 @@ uint8_t matrix_cols(void)
 
 void matrix_init(void)
 {
+    led_init();
     unselect_cols();
     init_rows();
     // initialize matrix state: all keys off
