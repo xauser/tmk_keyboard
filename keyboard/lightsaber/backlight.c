@@ -23,64 +23,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * Alphas    PB1 (high)
  * Numeric   PB2 (high)
  * Mod+Num   PB3 (high)
- * Backside  PD6 (high)
+ * Pcb       PD6 (high)
  * TopRight  PD7 (low)
- * F-Row     PE6 (high)
+ * F-Row     PE6 (low)
  */
 
 void backlight_set(uint8_t level)
 {
-    // Set as output.
-    DDRB |= (1<<1) | (1<<2) | (1<<3);
-    DDRD |= (1<<6) | (1<<7);
-    DDRE |= (1<<6);
+    DDRB |= 0b00001110;
+    DDRD |= 0b11000000;
+    DDRE |= 0b01000000;
 
-    if (level & BACKLIGHT_ALPHA)
-    {
-        PORTB |= (1<<1);
-    }
-    else
-    {
-        PORTB &= ~(1<<1);
-    }
-    if (level & BACKLIGHT_NUMERIC)
-    {
-        PORTB |= (1<<2);
-    }
-    else
-    {
-        PORTB &= ~(1<<2);
-    }
-    if (level & BACKLIGHT_MODNUM)
-    {
-        PORTB |= (1<<3);
-    }
-    else
-    {
-        PORTB &= ~(1<<3);
-    }
-    if (level & BACKLIGHT_BACKSIDE)
-    {
-        PORTD |= (1<<6);
-    }
-    else
-    {
-        PORTD &= ~(1<<6);
-    }
-    if (level & BACKLIGHT_TOPRIGHT)
-    {
-        PORTD &= ~(1<<7);
-    }
-    else
-    {
-        PORTD |= (1<<7);
-    }
-    if (level & BACKLIGHT_FROW)
-    {
-        PORTE |= (1<<6);
-    }
-    else
-    {
-        PORTE &= ~(1<<6);
-    }
+    level & BACKLIGHT_ALPHA ? (PORTB |= 0b00000010) : (PORTB &= ~0b00000010);
+    level & BACKLIGHT_NUMERIC ? (PORTB |= 0b00000100) : (PORTB &= ~0b00000100);
+    level & BACKLIGHT_MODNUM ? (PORTB |= 0b00001000) : (PORTB &= ~0b00001000);
+    level & BACKLIGHT_FROW ? (PORTE &= ~0b01000000) : (PORTE |= 0b01000000);
+    level & BACKLIGHT_TOPRGHT ? (PORTD &= ~0b10000000) : (PORTD |= 0b10000000);
+    level & BACKLIGHT_PCB ? (PORTD |= 0b01000000) : (PORTD &= ~0b01000000);
 }
