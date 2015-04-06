@@ -38,6 +38,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Set 0 if need no debouncing */
 #define DEBOUNCE    5
 
+/* Mouse movement tuning */
+#define MOUSEKEY_DELAY          100
+#define MOUSEKEY_INTERVAL       20
+#define MOUSEKEY_MAX_SPEED      3
+#define MOUSEKEY_TIME_TO_MAX    10
+
 /* key combination for command */
 #define IS_COMMAND() ( \
     keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \
