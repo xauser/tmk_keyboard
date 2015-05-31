@@ -1,6 +1,7 @@
+#include "keymap_common.h"
 #include "backlight.h"
 
-static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(\
         FN0, F1,  DEL, BSPC, \
         NLCK,PSLS,PAST,PMNS, \
@@ -17,7 +18,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FN7, NO,  MSTP)
 };
 
-static const action_t PROGMEM fn_actions[] = {
+const uint16_t PROGMEM fn_actions[] = {
     [0] = ACTION_LAYER_MOMENTARY(1),
     [1] = ACTION_BACKLIGHT_LEVEL(BACKLIGHT_FN1),
     [2] = ACTION_BACKLIGHT_LEVEL(BACKLIGHT_FN2),
