@@ -128,10 +128,10 @@ uint8_t matrix_key_count(void)
  */
 static void init_rows(void)
 {
-    DDRC &= ~0b10000100;
-    DDRB &= ~0b01111110;
-    PORTC |= 0b10000100;
-    PORTB |= 0b01111110;
+    DDRC  &= ~0b10000100;
+    DDRB  &= ~0b01111110;
+    PORTC |=  0b10000100;
+    PORTB |=  0b01111110;
 }
 
 static uint8_t read_rows(void)
@@ -174,66 +174,30 @@ static uint8_t read_rows(void)
  */
 static void unselect_cols(void)
 {
-    DDRD |= 0b01110111;
+    DDRD  |=  0b01110111;
     PORTD &= ~0b01110111;
 }
 
 static void select_col(uint8_t col)
 {
     switch (col) {
-        case 0:
-            PORTD |= (1<<5) | (1<<6) | (1<<2);
-            break;
-        case 1:
-            PORTD |= (1<<4) | (1<<6) | (1<<2);
-            break;
-        case 2:
-            PORTD |= (1<<6) | (1<<2);
-            break;
-        case 3:
-            PORTD |= (1<<4) | (1<<2) | (1<<0) | (1<<1);
-            break;
-        case 4:
-            PORTD |= (1<<2) | (1<<0) | (1<<1);
-            break;
-        case 5:
-            PORTD |= (1<<4) | (1<<5) | (1<<6) | (1<<0) | (1<<1);
-            break;
-        case 6:
-            PORTD |= (1<<5) | (1<<6) | (1<<0) | (1<<1);
-            break;
-        case 7:
-            PORTD |= (1<<4) | (1<<6) | (1<<0) | (1<<1);
-            break;
-        case 8:
-            PORTD |= (1<<6) | (1<<0) | (1<<1);
-            break;
-        case 9:
-            PORTD |= (1<<4) | (1<<5) | (1<<0) | (1<<1);
-            break;
-        case 10:
-            PORTD |= (1<<5) | (1<<0) | (1<<1);
-            break;
-        case 11:
-            PORTD |= (1<<4) | (1<<0) | (1<<1);
-            break;
-        case 12:
-            PORTD |= (1<<0) | (1<<1);
-            break;
-        case 13:
-            PORTD |= (1<<4) | (1<<1) | (1<<6) | (1<<2);
-            break;
-        case 14:
-            PORTD |= (1<<1) | (1<<6) | (1<<2);
-            break;
-        case 15:
-            PORTD |= (1<<4) | (1<<5) | (1<<0) | (1<<6) | (1<<2);
-            break;
-        case 16:
-            PORTD |= (1<<0) | (1<<6) | (1<<2);
-            break;
-        case 17:
-            PORTD |= (1<<4) | (1<<5) | (1<<6) | (1<<2);
-            break;
+        case 0:  PORTD |= 0b01100100; break;
+        case 1:  PORTD |= 0b01010100; break;
+        case 2:  PORTD |= 0b01000100; break;
+        case 3:  PORTD |= 0b00010111; break;
+        case 4:  PORTD |= 0b00000111; break;
+        case 5:  PORTD |= 0b01110011; break;
+        case 6:  PORTD |= 0b01100011; break;
+        case 7:  PORTD |= 0b01010011; break;
+        case 8:  PORTD |= 0b01000011; break;
+        case 9:  PORTD |= 0b00110011; break;
+        case 10: PORTD |= 0b00100011; break;
+        case 11: PORTD |= 0b00010011; break;
+        case 12: PORTD |= 0b00000011; break;
+        case 13: PORTD |= 0b01010110; break;
+        case 14: PORTD |= 0b01000110; break;
+        case 15: PORTD |= 0b01110101; break;
+        case 16: PORTD |= 0b01000101; break;
+        case 17: PORTD |= 0b01110100; break;
     }
 }
