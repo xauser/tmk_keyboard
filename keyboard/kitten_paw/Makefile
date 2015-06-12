@@ -39,7 +39,7 @@
 #----------------------------------------------------------------------------
 
 # Target file name (without extension).
-TARGET = kittenpaw_lufa
+TARGET = kittenpaw
 
 # Directory common source filess exist
 TMK_DIR = ../../tmk_core
@@ -48,9 +48,18 @@ TMK_DIR = ../../tmk_core
 TARGET_DIR = .
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC =	keymap.c \
-	matrix.c \
+SRC = matrix.c \
 	led.c
+
+# The keymap used for the firmware
+ifdef KEYMAP
+	SRC := keymap_$(KEYMAP).c $(SRC)
+endif
+
+ifdef ACTIONMAP
+	SRC := actionmap_$(ACTIONMAP).c $(SRC)
+	ACTIONMAP_ENABLE = yes	# Use 16bit action codes in keymap instead of 8bit keycodes
+endif
 
 CONFIG_H = config.h
 

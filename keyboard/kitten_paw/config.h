@@ -14,7 +14,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 #ifndef CONFIG_H
 #define CONFIG_H
 
@@ -24,8 +23,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0104
 #define MANUFACTURER    Costar
 #define PRODUCT         Majestouch
-
-/* message strings */
 #define DESCRIPTION     t.m.k. keyboard firmware for Majestouch
 
 /* matrix size */
@@ -39,5 +36,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define IS_COMMAND() ( \
     keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \
 )
+
+/* Mouse movement tuning */
+#define MOUSEKEY_DELAY          100
+#define MOUSEKEY_INTERVAL       20
+#define MOUSEKEY_MAX_SPEED      3
+#define MOUSEKEY_TIME_TO_MAX    10
 
 #endif

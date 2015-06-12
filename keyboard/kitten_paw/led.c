@@ -16,45 +16,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <avr/io.h>
-#include "stdint.h"
 #include "led.h"
 
-/* LED pin configuration
- *
- * Scroll Lock  PB7
- * CAPS         PC6
- * NUMLOCK      PC5
- *
- */
 void led_set(uint8_t usb_led)
 {
     DDRB |= (1<<7);
     DDRC |= (1<<5) | (1<<6);
 
-    if (usb_led & (1<<USB_LED_CAPS_LOCK))
-    {
-        PORTC &= ~(1<<6);
-    }
-    else
-    {
-        PORTC |= (1<<6);
-    }
-
-    if (usb_led & (1<<USB_LED_NUM_LOCK))
-    {
-        PORTC &= ~(1<<5);
-    }
-    else
-    {
-        PORTC |= (1<<5);
-    }
-
-    if (usb_led & (1<<USB_LED_SCROLL_LOCK))
-    {
-        PORTB &= ~(1<<7);
-    }
-    else
-    {
-        PORTB |= (1<<7);
-    }
+    usb_led & (1<<USB_LED_CAPS_LOCK) ? (PORTC &= ~(1<<6)) : (PORTC |= (1<<6));
+    usb_led & (1<<USB_LED_NUM_LOCK) ? (PORTC &= ~(1<<5)) : (PORTC |= (1<<5));
+    usb_led & (1<<USB_LED_SCROLL_LOCK) ? (PORTB &= ~(1<<7)) : (PORTB |= (1<<7));
 }
