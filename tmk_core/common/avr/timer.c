@@ -28,6 +28,24 @@ volatile uint32_t timer_count = 0;
 
 void timer_init(void)
 {
+#ifdef L3
+    TCCR0 = (1<<WGM01);
+#if TIMER_PRESCALER == 1
+    TCCR0 |= (1<<CS00);
+#elif TIMER_PRESCALER == 8
+    TCCR0 |= (1<<CS01);
+#elif TIMER_PRESCALER == 64
+    TCCR0 |= (1<<CS00) | (1<<CS01);
+#elif TIMER_PRESCALER == 256
+    TCCR0 |= (1<<CS02);
+#elif TIMER_PRESCALER == 1024
+    TCCR0 |= (1<<CS00) | (1<<CS02);
+#else
+#   error "Timer prescaler value is NOT vaild."
+#endif
+
+    OCR0 = TIMER_RAW_TOP;
+#else // L3 not defined
     // Timer0 CTC mode
     TCCR0A = 0x02;
 
@@ -46,10 +64,14 @@ void timer_init(void)
 #endif
 
     OCR0A = TIMER_RAW_TOP;
+#endif // L3
+
 #ifdef TIMSK0
     TIMSK0 = (1<<OCIE0A);
-#else
+#elif OCIE0A
     TIMSK = (1<<OCIE0A);
+#else
+    TIMSK = (1<<OCIE0);
 #endif
 }
 
@@ -115,7 +137,13 @@ uint32_t timer_elapsed32(uint32_t last)
 }
 
 // excecuted once per 1ms.(excess for just timer count?)
+#ifdef L3
+ISR(TIMER0_COMP_vect)
+{
+    sei(); // Enable interrupts within interrupt
+#else
 ISR(TIMER0_COMPA_vect)
 {
+#endif
     timer_count++;
 }

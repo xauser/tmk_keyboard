@@ -11,11 +11,17 @@ SRC +=	$(COMMON_DIR)/host.c \
 	$(COMMON_DIR)/debug.c \
 	$(COMMON_DIR)/util.c \
 	$(COMMON_DIR)/hook.c \
-	$(COMMON_DIR)/avr/suspend.c \
 	$(COMMON_DIR)/avr/xprintf.S \
 	$(COMMON_DIR)/avr/timer.c \
 	$(COMMON_DIR)/avr/bootloader.c
 
+# L3 and/or VUSB has no suspend features for now
+ifdef L3
+    OPT_DEFS += -DL3
+    OPT_DEFS += -DPS2_USE_USART
+else
+    SRC += $(COMMON_DIR)/avr/suspend.c
+endif
 
 # Option modules
 ifeq (yes,$(strip $(UNIMAP_ENABLE)))

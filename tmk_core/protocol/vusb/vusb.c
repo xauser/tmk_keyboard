@@ -26,6 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "vusb.h"
 
 
+uint8_t keyboard_idle = 0;
+uint8_t keyboard_protocol = 1;
 static uint8_t vusb_keyboard_leds = 0;
 static uint8_t vusb_idle_rate = 0;
 
