@@ -36,13 +36,6 @@ won't work anymore and you'll lose your warrenty. GON won't provide any support 
 Build
 -----
 
-For building you have to specify two build-options, LAYOUT and KEYMAP. The layout option defines
-pcb layout and can be either 60% or 80% at the momemnt. The keymap option selects your
-preferred keymapping.
-
-Move to this directory then just run `make LAYOUT=60 KEYMAP=ansi150`
-
-to compile a firmware for a 60% pcb with ANSI 150 key mapping.
 
 
 Jump to Bootloader

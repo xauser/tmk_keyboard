@@ -14,16 +14,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "keymap_common.h"
 
-/* translates key to keycode */
-uint8_t keymap_key_to_keycode(uint8_t layer, keypos_t key)
+#include <avr/io.h>
+#include "backlight.h"
+#include "led.h"
+
+void backlight_init_ports()
 {
-    return pgm_read_byte(&keymaps[(layer)][(key.row)][(key.col)]);
+    DDRB |= 0b11100000; // PB7 (switch), PB6 (pcb), PB5 (caps)
 }
 
-/* translates Fn keycode to action */
-action_t keymap_fn_to_action(uint8_t keycode)
+void led_set(uint8_t usb_led)
 {
-    return (action_t){ .code = pgm_read_word(&fn_actions[FN_INDEX(keycode)]) };
+    usb_led & (1<<USB_LED_CAPS_LOCK) ? (PORTB |= 0b00100000) : (PORTB &= ~0b00100000);
+}
+
+void backlight_set(uint8_t level)
+{
+    level & BACKLIGHT_SWITCH ? (PORTB |= 0b10000000) : (PORTB &= ~0b10000000);
+    level & BACKLIGHT_PCB ? (PORTB |= 0b01000000) : (PORTB &= ~0b01000000);
 }
