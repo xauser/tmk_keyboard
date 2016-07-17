@@ -53,6 +53,13 @@ SRC +=	keymap.c \
 	matrix.c \
 	led.c
 
+# The keymap used for the firmware
+ifdef KEYMAP
+    SRC := keymap_$(KEYMAP).c $(SRC)
+else
+    SRC := keymap_winkey.c $(SRC)
+endif
+
 CONFIG_H = config.h
 
 
@@ -98,12 +105,12 @@ F_USB = $(F_CPU)
 #   comment out to disable the options.
 #
 BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
-#MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
+MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
 EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
-CONSOLE_ENABLE = yes	# Console for debug(+400)
+#CONSOLE_ENABLE = yes	# Console for debug(+400)
 COMMAND_ENABLE = yes    # Commands for debug and configuration
 #SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-#NKRO_ENABLE = yes	# USB Nkey Rollover - not yet supported in LUFA
+NKRO_ENABLE = yes	# USB Nkey Rollover
 
 
 # Boot Section Size in bytes
@@ -120,18 +127,3 @@ VPATH += $(TMK_DIR)
 include $(TMK_DIR)/protocol/lufa.mk
 include $(TMK_DIR)/common.mk
 include $(TMK_DIR)/rules.mk
-
-ansi: OPT_DEFS += -DLAYOUT_ANSI
-ansi: all
-
-ansi_150: OPT_DEFS += -DLAYOUT_ANSI_150
-ansi_150: all
-
-iso: OPT_DEFS += -DLAYOUT_ISO
-iso: all
-
-iso_150: OPT_DEFS += -DLAYOUT_ISO_150
-iso_150: all
-
-7bit: OPT_DEFS += -DLAYOUT_7BIT
-7bit: all
