@@ -187,35 +187,15 @@ static void reset_outputs(void)
 static void select_output(uint8_t col)
 {
     switch (col) {
-        case 0:
-            PORTB &= ~(1<<4);
-            break;
-        case 1:
-            PORTE &= ~(1<<2);
-            break;
-        case 2:
-            PORTF &= ~(1<<4);
-            break;
-        case 3:
-            PORTF &= ~(1<<7);
-            break;
-        case 4:
-            PORTF &= ~(1<<1);
-            break;
-        case 5:
-            PORTF &= ~(1<<6);
-            break;
-        case 6:
-            PORTC &= ~(1<<6);
-            break;
-        case 7:
-            PORTF &= ~(1<<5);
-            break;
-        case 8:
-            PORTD &= ~(1<<7);
-            break;
-        case 9:
-            PORTC &= ~(1<<7);
-            break;
+        case 0: PORTB &= ~(1<<4); break;
+        case 1: PORTE &= ~(1<<2); break;
+        case 2: PORTF &= ~(1<<4); break;
+        case 3: PORTF &= ~(1<<7); break;
+        case 4: PORTF &= ~(1<<1); break;
+        case 5: PORTF &= ~(1<<6); break;
+        case 6: PORTC &= ~(1<<6); break;
+        case 7: PORTF &= ~(1<<5); break;
+        case 8: PORTD &= ~(1<<7); break;
+        case 9: PORTC &= ~(1<<7); break;
     }
 }
