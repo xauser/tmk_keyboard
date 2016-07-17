@@ -48,16 +48,11 @@ TMK_DIR = ../../tmk_core
 TARGET_DIR = .
 
 # project specific files
-SRC =	keymap_common.c \
-	matrix.c \
+SRC = matrix.c \
 	backlight.c
 
-ifdef LAYOUT
-   OPT_DEFS += -DNERD_LAYOUT_$(LAYOUT)
-endif
-
 ifdef KEYMAP
-    SRC := keymap_$(LAYOUT)_$(KEYMAP).c $(SRC)
+    SRC := keymap_$(KEYMAP).c $(SRC)
 endif
 
 CONFIG_H = config.h
@@ -108,14 +103,14 @@ OPT_DEFS += -DBOOTLOADER_SIZE=4096
 # Build Options
 #   comment out to disable the options.
 #
-BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
-EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
-CONSOLE_ENABLE = yes	# Console for debug(+400)
-COMMAND_ENABLE = yes    # Commands for debug and configuration
+BOOTMAGIC_ENABLE = yes   # Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE = yes    # Mouse keys(+4700)
+EXTRAKEY_ENABLE = yes    # Audio control and System control(+450)
+#CONSOLE_ENABLE = yes    # Console for debug(+400)
+COMMAND_ENABLE = yes     # Commands for debug and configuration
 #SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
-#NKRO_ENABLE = yes	# USB Nkey Rollover - not yet supported in LUFA
-BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
+NKRO_ENABLE = yes        # USB Nkey Rollover
+BACKLIGHT_ENABLE = yes   # Enable keyboard backlight functionality
 
 # Search Path
 VPATH += $(TARGET_DIR)
