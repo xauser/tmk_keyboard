@@ -25,16 +25,4 @@ enum backlight_level {
 
 void backlight_init_ports(void);
 
-void backlight_switch_invert(void);
-void backlight_switch_enable(void);
-void backlight_switch_disable(void);
-
-void backlight_pcb_invert(void);
-void backlight_pcb_enable(void);
-void backlight_pcb_disable(void);
-
-void backlight_caps_invert(void);
-void backlight_caps_enable(void);
-void backlight_caps_disable(void);
-
 #endif // BACKLIGHT_H
