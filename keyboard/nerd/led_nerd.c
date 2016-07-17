@@ -15,26 +15,22 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef BACKLIGHT_H
-#define BACKLIGHT_H
+#include <avr/io.h>
+#include <led.h>
+#include "led_nerd.h"
 
-enum backlight_level {
-    BACKLIGHT_SWITCH = 0b0000001,
-    BACKLIGHT_PCB    = 0b0000010,
-};
+void led_init()
+{
+    DDRB |= 0b11100000; // PB7 (switch), PB6 (pcb), PB5 (caps)
+}
 
-void backlight_init_ports(void);
+void led_set(uint8_t usb_led)
+{
+    usb_led & (1<<USB_LED_CAPS_LOCK) ? (PORTB |= 0b00100000) : (PORTB &= ~0b00100000);
+}
 
-void backlight_switch_invert(void);
-void backlight_switch_enable(void);
-void backlight_switch_disable(void);
-
-void backlight_pcb_invert(void);
-void backlight_pcb_enable(void);
-void backlight_pcb_disable(void);
-
-void backlight_caps_invert(void);
-void backlight_caps_enable(void);
-void backlight_caps_disable(void);
-
-#endif // BACKLIGHT_H
+void backlight_set(uint8_t level)
+{
+    level & BACKLIGHT_LEVEL_SWITCH ? (PORTB |= 0b10000000) : (PORTB &= ~0b10000000);
+    level & BACKLIGHT_LEVEL_PCB ? (PORTB |= 0b01000000) : (PORTB &= ~0b01000000);
+}
