@@ -15,19 +15,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* 
- * Keymap for Phantom controller
- */
+#ifndef KEYMAP_COMMON_H
+#define KEYMAP_COMMON_H
+
 #include <stdint.h>
-#include <stdbool.h>
-#include <avr/pgmspace.h>
-#include "keycode.h"
 #include "action.h"
-#include "action_macro.h"
-#include "report.h"
-#include "host.h"
-#include "debug.h"
-#include "keymap.h"
 
 // Convert physical keyboard layout to matrix array.
 // This is a macro to define keymap easily in keyboard layout form.
@@ -112,40 +104,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     K0A, K0B, K0C, NO,       NO,  K0G, NO,            NO,  K0L, K0M, K0N,      K0P, K0Q, K0R  \
 )
 
-#if defined(LAYOUT_7BIT)
-    #include "keymap_7bit.h"
-#elif defined(LAYOUT_ISO_150)
-    #include "keymap_iso_150.h"
-#elif defined(LAYOUT_ISO)
-    #include "keymap_iso.h"
-#elif defined(LAYOUT_ANSI_150)
-    #include "keymap_ansi_150.h"
-#else
-    #include "keymap_ansi.h"
-#endif
-
-#define KEYMAPS_SIZE    (sizeof(keymaps) / sizeof(keymaps[0]))
-#define FN_ACTIONS_SIZE (sizeof(fn_actions) / sizeof(fn_actions[0]))
-
-/* translates key to keycode */
-uint8_t keymap_key_to_keycode(uint8_t layer, keypos_t key)
-{
-    if (layer < KEYMAPS_SIZE) {
-        return pgm_read_byte(&keymaps[(layer)][(key.row)][(key.col)]);
-    } else {
-        // fall back to layer 0
-        return pgm_read_byte(&keymaps[0][(key.row)][(key.col)]);
-    }
-}
-
-/* translates Fn keycode to action */
-action_t keymap_fn_to_action(uint8_t keycode)
-{
-    action_t action;
-    if (FN_INDEX(keycode) < FN_ACTIONS_SIZE) {
-        action.code = pgm_read_word(&fn_actions[FN_INDEX(keycode)]);
-    } else {
-        return (action_t)ACTION_NO;
-    }
-    return action;
-}
+#endif // KEYMAP_COMMON_H

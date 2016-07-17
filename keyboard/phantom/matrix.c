@@ -32,33 +32,12 @@ static void init_rows(void);
 static void unselect_cols(void);
 static void select_col(uint8_t col);
 
-#ifndef SLEEP_LED_ENABLE
-/* LEDs are on output compare pins OC1B OC1C
-   This activates fast PWM mode on them.
-   Prescaler 256 and 8-bit counter results in
-   16000000/256/256 = 244 Hz blink frequency.
-   LED_A: Caps Lock
-   LED_B: Scroll Lock  */
-/* Output on PWM pins are turned off when the timer 
-   reaches the value in the output compare register,
-   and are turned on when it reaches TOP (=256). */
 static
 void setup_leds(void)
 {
-    TCCR1A |=      // Timer control register 1A
-        (1<<WGM10) | // Fast PWM 8-bit
-        (1<<COM1B1)| // Clear OC1B on match, set at TOP
-        (1<<COM1C1); // Clear OC1C on match, set at TOP
-    TCCR1B |=      // Timer control register 1B
-        (1<<WGM12) | // Fast PWM 8-bit
-        (1<<CS12);   // Prescaler 256
-    OCR1B = LED_BRIGHTNESS;    // Output compare register 1B
-    OCR1C = LED_BRIGHTNESS;    // Output compare register 1C
-    // LEDs: LED_A -> PORTB6, LED_B -> PORTB7
-    DDRB  |= (1<<6) | (1<<7);
-    PORTB  &= ~((1<<6) | (1<<7));
+    DDRB  |=  0b11000000;
+    PORTB &= ~0b11000000;
 }
-#endif
 
 inline
 uint8_t matrix_rows(void)
@@ -77,13 +56,11 @@ void matrix_init(void)
     // To use PORTF disable JTAG with writing JTD bit twice within four cycles.
     MCUCR |= (1<<JTD);
     MCUCR |= (1<<JTD);
-	
+
     // initialize row and col
     unselect_cols();
     init_rows();
-#ifndef SLEEP_LED_ENABLE
     setup_leds();
-#endif
 
     // initialize matrix state: all keys off
     for (uint8_t i = 0; i < MATRIX_ROWS; i++)  {
