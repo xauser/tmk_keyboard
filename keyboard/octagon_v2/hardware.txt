@@ -1,0 +1,64 @@
+
+
+                *** Micro Chips ***
+
+                U1, U2 = 74HC237D
+                U3 = ATMEGA32U4
+                U4 = 16Mhz Crystal
+                U5, U6 = WS2811s
+
+               *** RGB PCB Leds ***
+
+     U3_PD6 -> LED01_4_DIN -> ... -> LED17_4_DIN
+
+                *** Switch Leds ***
+
+        U3_PB0 (low active) -> Caps lock
+        U3_PE6 -> Function row
+        U3_PB1 -> Alphas
+        U3_PB2 -> Navigation and extra
+        U3_PB3 -> Modifiers and number row
+        U3_PB4 (low active) -> Indicater / scroll lock (top right)
+
+                *** Status Leds ***
+
+        U3_PD4 -> U5_DIN -> U5_DO -> U6_DIN
+                L1 -> U5_3_OUTB
+                L2 -> U5_2_OUTG
+                L3 -> U5_1_OUTR
+                L4 -> U6_1_OUTR
+                L5 -> U6_2_OUTG
+                L5 -> U6_3_OUTB
+                L7 -> PD7 (high active)
+
+         *** Row / Column Pin Mapping ***
+
+                 Row 0 -> PD0
+                 Row 1 -> PD1
+                 Row 2 -> PD2
+                 Row 3 -> PD3
+                 Row 4 -> PD5
+                 Row 5 -> PB7
+
+| COL | U1 PC6 | U2 PB6 | PC7 A2 | PF1 A1 | PF0 A0 | PE2 |
+|  0  |   1    |    0   |   0    |    0   |   0    |  0  |
+|  1  |   1    |    0   |   0    |    0   |   1    |  0  |
+|  2  |   1    |    0   |   0    |    1   |   0    |  0  |
+|  3  |   1    |    0   |   0    |    1   |   1    |  0  |
+|  4  |   1    |    0   |   1    |    0   |   0    |  0  |
+|  5  |   1    |    0   |   1    |    0   |   1    |  0  |
+|  6  |   1    |    0   |   1    |    1   |   0    |  0  |
+|  7  |   1    |    0   |   1    |    1   |   1    |  0  |
+|  8  |   0    |    1   |   0    |    0   |   0    |  0  |
+|  9  |   0    |    1   |   0    |    0   |   1    |  0  |
+| 10  |   0    |    1   |   0    |    1   |   0    |  0  |
+| 11  |   0    |    1   |   0    |    1   |   1    |  0  |
+| 12  |   0    |    1   |   1    |    0   |   0    |  0  |
+| 13  |   0    |    1   |   1    |    0   |   1    |  0  |
+| 14  |   0    |    1   |   1    |    1   |   0    |  0  |
+| 15  |   0    |    1   |   1    |    1   |   1    |  0  |
+| 16  |   0    |    0   |   0    |    0   |   0    |  1  |
+
+
+
+
