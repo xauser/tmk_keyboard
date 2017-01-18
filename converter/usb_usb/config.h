@@ -18,22 +18,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef CONFIG_H
 #define CONFIG_H
 
-
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x005B
 #define DEVICE_VER      0x0814
 #define MANUFACTURER    t.m.k.
 #define PRODUCT         USB to USB keyboard converter
 
-
 #define DESCRIPTION     Product from t.m.k. keyboard firmware project
 
+#define MOUSEKEY_DELAY          100
+#define MOUSEKEY_INTERVAL       20
+#define MOUSEKEY_MAX_SPEED      3
+#define MOUSEKEY_TIME_TO_MAX    10
 
 /* matrix size */
 #define MATRIX_ROWS 16
 #define MATRIX_COLS 16
 
 /* key combination for command */
-#define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT))) 
+#define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 
 #endif

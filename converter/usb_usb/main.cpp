@@ -58,7 +58,9 @@ static void LUFA_setup(void)
     print_set_sendchar(sendchar);
 }
 
-
+void led_layer_set(uint32_t state)
+{
+}
 
 int main(void)
 {
