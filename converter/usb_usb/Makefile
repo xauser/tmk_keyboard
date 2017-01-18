@@ -89,9 +89,10 @@ F_USB ?= $(F_CPU)
 #
 MOUSEKEY_ENABLE ?= yes	# Mouse keys
 EXTRAKEY_ENABLE ?= yes	# Media control and System control
-CONSOLE_ENABLE ?= yes	# Console for debug
-#COMMAND_ENABLE ?= yes    # Commands for debug and configuration
+#CONSOLE_ENABLE ?= yes	# Console for debug
+COMMAND_ENABLE ?= yes    # Commands for debug and configuration
 #NKRO_ENABLE ?= yes	# USB Nkey Rollover
+ACTIONMAP_ENABLE ?= yes	# Use 16bit actionmap instead of 8bit keymap
 
 # Boot Section Size in bytes
 #   Teensy halfKay   512
