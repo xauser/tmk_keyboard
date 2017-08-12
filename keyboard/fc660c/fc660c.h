@@ -85,22 +85,22 @@ static inline void SET_COL(uint8_t COL)
     K33, K31, K32, K34, K36, K37, K35, K3B, K38, K39, K3A,           K3C, K3D,      \
     K23, K21, K22,                K27,                K28, K2A, K2C, K2E, K2D, K2F  \
 ) { \
-    { AC_##K00, AC_##K01, AC_##K02, AC_##K03, AC_##K04, AC_##K05, AC_##K06, AC_##K07,   \
-      AC_##K08, AC_##K09, AC_##K0A, AC_##K0B, AC_##K0C, AC_NO,    AC_##K0E, AC_##K0F }, \
-    { AC_##K10, AC_##K11, AC_##K12, AC_##K13, AC_##K14, AC_##K15, AC_##K16, AC_##K17,   \
-      AC_##K18, AC_##K19, AC_##K1A, AC_##K1B, AC_##K1C, AC_NO,    AC_##K1E, AC_##K1F }, \
-    { AC_NO,    AC_##K21, AC_##K22, AC_##K23, AC_NO,    AC_NO,    AC_NO,    AC_##K27,   \
-      AC_##K28, AC_NO,    AC_##K2A, AC_NO,    AC_##K2C, AC_##K2D, AC_##K2E, AC_##K2F }, \
-    { AC_NO,    AC_##K31, AC_##K32, AC_##K33, AC_##K34, AC_##K35, AC_##K36, AC_##K37,   \
-      AC_##K38, AC_##K39, AC_##K3A, AC_##K3B, AC_##K3C, AC_##K3D, AC_NO,    AC_NO    }, \
-    { AC_##K40, AC_##K41, AC_##K42, AC_##K43, AC_##K44, AC_##K45, AC_##K46, AC_##K47,   \
-      AC_##K48, AC_##K49, AC_##K4A, AC_##K4B, AC_NO,    AC_NO,    AC_##K4E, AC_NO    }, \
-    { AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,      \
-      AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO    }, \
-    { AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,      \
-      AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO    }, \
-    { AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,      \
-      AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO,    AC_NO    }  \
+    { KC_##K00, KC_##K01, KC_##K02, KC_##K03, KC_##K04, KC_##K05, KC_##K06, KC_##K07,   \
+      KC_##K08, KC_##K09, KC_##K0A, KC_##K0B, KC_##K0C, KC_NO,    KC_##K0E, KC_##K0F }, \
+    { KC_##K10, KC_##K11, KC_##K12, KC_##K13, KC_##K14, KC_##K15, KC_##K16, KC_##K17,   \
+      KC_##K18, KC_##K19, KC_##K1A, KC_##K1B, KC_##K1C, KC_NO,    KC_##K1E, KC_##K1F }, \
+    { KC_NO,    KC_##K21, KC_##K22, KC_##K23, KC_NO,    KC_NO,    KC_NO,    KC_##K27,   \
+      KC_##K28, KC_NO,    KC_##K2A, KC_NO,    KC_##K2C, KC_##K2D, KC_##K2E, KC_##K2F }, \
+    { KC_NO,    KC_##K31, KC_##K32, KC_##K33, KC_##K34, KC_##K35, KC_##K36, KC_##K37,   \
+      KC_##K38, KC_##K39, KC_##K3A, KC_##K3B, KC_##K3C, KC_##K3D, KC_NO,    KC_NO    }, \
+    { KC_##K40, KC_##K41, KC_##K42, KC_##K43, KC_##K44, KC_##K45, KC_##K46, KC_##K47,   \
+      KC_##K48, KC_##K49, KC_##K4A, KC_##K4B, KC_NO,    KC_NO,    KC_##K4E, KC_NO    }, \
+    { KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,      \
+      KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO    }, \
+    { KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,      \
+      KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO    }, \
+    { KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,      \
+      KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO    }  \
 }
 #endif
 
