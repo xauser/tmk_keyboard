@@ -46,8 +46,6 @@ void matrix_init(void)
     debug_keyboard = true;
     debug_matrix = true;
 #endif
-    debug_enable = true;
-    debug_matrix = true;
 
     KEY_INIT();
 
