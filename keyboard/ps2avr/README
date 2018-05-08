@@ -1,0 +1,7 @@
+bootloaderHID
+
+http://www.obdev.at/
+
+To enter bootloader press and hold ESC during keyboard power on.
+
+sudo ./bootloadHID -r ../../tmk_keyboard/keyboard/ps2avr/ps2avr.hex
