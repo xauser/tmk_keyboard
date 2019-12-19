@@ -1,0 +1,30 @@
+Connector CON1
+
+	RESET | SCK   | MISO
+	GND   | MOSI  | VUSB
+
+Matrix
+	PC6 (Col 0)
+	PB6 (Col 1)
+	PC7 (Col 2)
+	PF4 (Col 3)
+	PE6 (Col 4)
+	PB2 (Col 5)
+	PD6 (Col 6)
+	PD0 (Col 7)
+	PD1 (Col 8)
+	PD7 (Col 9)
+	PD4 (Col 10)
+	PD5 (Col 11)
+	PD3 (Col 12)
+	PF1 (Col 13)
+	PD2 (Col 14)
+	PB1 (Col 15)
+
+	PF7 (Row 0)
+	PF6 (Row 1)
+	PF5 (Row 2)
+	PF0 (Row 3)
+	PB4 (Row 4)
+
+Diodes Col -> Row
