@@ -1,0 +1,24 @@
+Matrix
+	PF0 (Col 0)
+	PF1 (Col 1)
+	PE6 (Col 2)
+	PC7 (Col 3)
+	PC6 (Col 4)
+	PB7 (Col 5)
+	PD4 (Col 6)
+	PB1 (Col 7)
+	PB0 (Col 8)
+	PB5 (Col 9)
+	PB4 (Col 10)
+	PD7 (Col 11)
+	PD6 (Col 12)
+	PB3 (Col 13)
+	PF4 (Col 14)
+
+	PD0 (Row 0)
+	PD1 (Row 1)
+	PD2 (Row 2)
+	PD3 (Row 3)
+	PD5 (Row 4)
+
+Diodes Col -> Row
