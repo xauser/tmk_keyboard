@@ -1,0 +1,10 @@
+
+This board uses a lufa printer bootloader
+
+You have to install a "Generic Text Only" printer in cups
+
+To enter bootloader press ESC + F1 while plugging in usb cable.
+After you've entered the bootloader CAPS and BACKSPACE leds start to blink.
+
+The firmware can get flashed via command "cat redscarf2_lufa.hex | lpr -P Generic__Text_Only"
+While the firmware gets flashed the bootloader leds start to blink more frequently
