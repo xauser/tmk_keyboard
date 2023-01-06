@@ -54,4 +54,3 @@ void led_set(uint8_t usb_led)
         ergodox_right_led_3_off();
     }
 }
-
