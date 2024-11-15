@@ -1,18 +1,30 @@
-TMK Keyboard Firmware Collection
-================================
-This repository includes keyboard and converter firmware projects built with [`tmk_core`](https://github.com/tmk/tmk_core) keyboard library.
+Various TMK based keyboard firmwares
+====================================
 
-The latest source code is available here: <http://github.com/tmk/tmk_keyboard>
+This fork of tmk_firmware provides a place for several tmk based firmwares that
+aren't included in the official repository. This fork will rebase from time to time
+with the official repository and keeps all supported keyboard firmwares as patches on top.
 
+This branch supports the following keyboards/controller
 
-
-Documentation
--------------
-Refer to wiki pages for further info.
-
-https://github.com/tmk/tmk_keyboard/wiki
-
-
+- Ergodox
+- Nerd
+- Jetfire
+- Lightpad
+- Lightsaber v1
+- Octagon v1
+- Octagon v2
+- Phantom
+- L3 Compact
+- L3 Ergo
+- L3 MX1800
+- L3 St
+- L3 TKL87
+- Physix
+- B87
+- RedScarf v2
+- X268
+- H87A
 
 License
 -------
