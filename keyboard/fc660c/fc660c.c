@@ -128,11 +128,14 @@ matrix_row_t matrix_get_row(uint8_t row)
 
 void led_set(uint8_t usb_led)
 {
+    // HOST caps lock control disabled. LED is used for layer state.
+    /*
     if (usb_led & (1<<USB_LED_CAPS_LOCK)) {
         PORTB &= ~(1<<6);
     } else {
         PORTB |=  (1<<6);
     }
+    */
 }
 
 
