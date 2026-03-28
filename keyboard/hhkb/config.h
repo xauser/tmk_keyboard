@@ -50,6 +50,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Boot Magic salt key: Space */
 #define BOOTMAGIC_KEY_SALT      KC_SPACE
 
+/* Mouse movement tuning */
+#define MOUSEKEY_DELAY          100
+#define MOUSEKEY_INTERVAL       20
+#define MOUSEKEY_MAX_SPEED      4
+#define MOUSEKEY_TIME_TO_MAX    30
 
 /*
  * Feature disable options
